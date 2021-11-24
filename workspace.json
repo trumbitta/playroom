@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "coloring-pages": "apps/coloring-pages",
+    "coloring-pages-e2e": "apps/coloring-pages-e2e"
+  }
+}

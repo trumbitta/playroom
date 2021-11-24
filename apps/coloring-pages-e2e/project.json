@@ -1,0 +1,28 @@
+{
+  "root": "apps/coloring-pages-e2e",
+  "sourceRoot": "apps/coloring-pages-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/coloring-pages-e2e/cypress.json",
+        "devServerTarget": "coloring-pages:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "coloring-pages:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/coloring-pages-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["coloring-pages"]
+}
