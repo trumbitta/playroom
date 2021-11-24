@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@coloring-pages/images/*": [
+        "libs/images/src/lib/*"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

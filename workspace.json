@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "coloring-pages": "apps/coloring-pages",
-    "coloring-pages-e2e": "apps/coloring-pages-e2e"
+    "coloring-pages-e2e": "apps/coloring-pages-e2e",
+    "images": "libs/images"
   }
 }
