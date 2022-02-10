@@ -1,22 +1,23 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 // Third Parties
 import VisuallyHidden from '@reach/visually-hidden';
 import styled from 'styled-components';
 
 // Configurations
-import { Color, colors } from './colors';
+import { colors } from './colors';
 
-interface ColorPickerProps {
-  onChooseColor: (color: Color) => void;
-}
+// Hooks
+import { useAppContext } from './context/use-app-context.hook';
 
-export const ColorPicker: FC<ColorPickerProps> = ({ onChooseColor }) => {
+export const ColorPicker: FC = () => {
+  const { setCurrentColor } = useAppContext();
+
   return (
     <article>
       <ColorList>
         {colors.map((color) => (
-          <li key={color.code} onClick={() => onChooseColor(color)}>
+          <li key={color.code} onClick={() => setCurrentColor(color)}>
             <ColorButton color={color.code}>
               <VisuallyHidden>{color.name}</VisuallyHidden>
             </ColorButton>
