@@ -42,6 +42,7 @@ const PickButton = styled.button`
   font-family: sans-serif;
   font-weight: bold;
   cursor: pointer;
+  color: #000000;
 `;
 
 const PickAnna = styled(PickButton)`
