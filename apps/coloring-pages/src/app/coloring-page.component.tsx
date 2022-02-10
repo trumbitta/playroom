@@ -1,20 +1,40 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 // Coloring Pages
-import { ReactComponent as Picture } from '@coloring-pages/images/elsa.svg';
+import { ReactComponent as Anna } from '@coloring-pages/images/anna.svg';
+import { ReactComponent as Elsa } from '@coloring-pages/images/elsa.svg';
 
 // Hooks
 import { useColoringPage } from './use-coloring-page.hook';
+import { useAppContext } from './context/use-app-context.hook';
+
+// Types
+import { Drawing } from './context/app.context';
 
 interface ColoringPageProps {
   className?: string;
-  currentColorCode: string;
 }
 
-export const ColoringPage: FC<ColoringPageProps> = ({
-  className,
-  currentColorCode,
-}) => {
+export const ColoringPage: FC<ColoringPageProps> = ({ className }) => {
+  const {
+    currentColor: { code: currentColorCode },
+    drawing,
+  } = useAppContext();
+
+  const Picture = (
+    {
+      anna: Anna,
+      elsa: Elsa,
+    } as Record<
+      Drawing,
+      React.FunctionComponent<
+        React.SVGProps<SVGSVGElement> & {
+          title?: string | undefined;
+        }
+      >
+    >
+  )[drawing];
+
   const svgRef = useColoringPage(currentColorCode);
 
   return <Picture ref={svgRef} className={className} />;
