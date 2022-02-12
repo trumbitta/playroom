@@ -22,7 +22,7 @@ export const App = () => {
 };
 
 const Container = styled.div`
-  height: calc(100vh - ${colorPickerHeightInRem * 1.25}rem);
+  height: calc(100vh - ${colorPickerHeightInRem * 1.5}rem);
   text-align: center;
 `;
 
