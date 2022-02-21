@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 // Coloring Pages
-import { ReactComponent as Anna } from '@coloring-pages/images/anna.svg';
-import { ReactComponent as Elsa } from '@coloring-pages/images/elsa.svg';
+import { ReactComponent as Anna } from '@playroom/coloring-pages/images/anna.svg';
+import { ReactComponent as Elsa } from '@playroom/coloring-pages/images/elsa.svg';
 
 // Hooks
 import { useColoringPage } from './use-coloring-page.hook';

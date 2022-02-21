@@ -1,3 +1,3 @@
-# images
+# coloring-pages-images
 
 This library was generated with [Nx](https://nx.dev).

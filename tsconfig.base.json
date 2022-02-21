@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@coloring-pages/images/*": ["libs/images/src/lib/*"]
+      "@playroom/coloring-pages/images/*": [
+        "libs/coloring-pages/images/src/lib/*"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

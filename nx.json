@@ -1,5 +1,5 @@
 {
-  "npmScope": "coloring-pages",
+  "npmScope": "playroom",
   "affected": {
     "defaultBase": "main"
   },
@@ -17,12 +17,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "YzAzMTc1ZDktYzdkNy00Nzc2LTgxZDEtYzM4ZGJlMDcyMzc4fHJlYWQtd3JpdGU="
       }
     }

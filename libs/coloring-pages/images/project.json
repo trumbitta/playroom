@@ -1,13 +1,13 @@
 {
-  "root": "libs/images",
-  "sourceRoot": "libs/images/src",
+  "root": "libs/coloring-pages/images",
+  "sourceRoot": "libs/coloring-pages/images/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/images/**/*.ts"]
+        "lintFilePatterns": ["libs/coloring-pages/images/**/*.ts"]
       }
     }
   },

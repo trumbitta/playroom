@@ -2,7 +2,6 @@ tasks:
   - before: |
       npm i -g @nrwl/cli commitizen
     init: npm install
-    command: nx serve coloring-pages
 vscode:
   extensions:
     - dbaeumer.vscode-eslint

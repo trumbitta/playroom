@@ -3,6 +3,6 @@
   "projects": {
     "coloring-pages": "apps/coloring-pages",
     "coloring-pages-e2e": "apps/coloring-pages-e2e",
-    "images": "libs/images"
+    "coloring-pages-images": "libs/coloring-pages/images"
   }
 }
