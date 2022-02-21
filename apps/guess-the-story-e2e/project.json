@@ -1,0 +1,28 @@
+{
+  "root": "apps/guess-the-story-e2e",
+  "sourceRoot": "apps/guess-the-story-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/guess-the-story-e2e/cypress.json",
+        "devServerTarget": "guess-the-story:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "guess-the-story:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/guess-the-story-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["guess-the-story"]
+}

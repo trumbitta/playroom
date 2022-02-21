@@ -15,6 +15,14 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:coloring-pages",
+                "onlyDependOnLibsWithTags": ["scope:coloring-pages"]
+              },
+              {
+                "sourceTag": "scope:guess-the-story",
+                "onlyDependOnLibsWithTags": ["scope:guess-the-story"]
               }
             ]
           }

@@ -17,6 +17,12 @@
     "paths": {
       "@playroom/coloring-pages/images/*": [
         "libs/coloring-pages/images/src/lib/*"
+      ],
+      "@playroom/guess-the-story/data": [
+        "libs/guess-the-story/data/src/index.ts"
+      ],
+      "@playroom/guess-the-story/features/stories": [
+        "libs/guess-the-story/features/stories/src/index.ts"
       ]
     }
   },

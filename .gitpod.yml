@@ -9,3 +9,4 @@ vscode:
     - esbenp.prettier-vscode
     - nrwl.angular-console
     - jpoissonnier.vscode-styled-components
+    - naumovs.color-highlight
