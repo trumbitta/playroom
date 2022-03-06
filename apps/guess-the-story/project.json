@@ -1,6 +1,6 @@
 {
-  "root": "apps/coloring-pages",
-  "sourceRoot": "apps/coloring-pages/src",
+  "root": "apps/guess-the-story",
+  "sourceRoot": "apps/guess-the-story/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,15 +8,17 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/coloring-pages",
-        "index": "apps/coloring-pages/src/index.html",
+        "compiler": "babel",
+        "outputPath": "dist/apps/guess-the-story",
+        "index": "apps/guess-the-story/src/index.html",
         "baseHref": "/",
-        "main": "apps/coloring-pages/src/main.tsx",
-        "polyfills": "apps/coloring-pages/src/polyfills.ts",
-        "tsConfig": "apps/coloring-pages/tsconfig.app.json",
+        "main": "apps/guess-the-story/src/main.tsx",
+        "polyfills": "apps/guess-the-story/src/polyfills.ts",
+        "tsConfig": "apps/guess-the-story/tsconfig.app.json",
         "assets": [
-          "apps/coloring-pages/src/favicon.ico",
-          "apps/coloring-pages/src/assets"
+          "apps/guess-the-story/src/favicon.ico",
+          "apps/guess-the-story/src/assets",
+          "apps/guess-the-story/src/_redirects"
         ],
         "styles": [],
         "scripts": [],
@@ -26,8 +28,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/coloring-pages/src/environments/environment.ts",
-              "with": "apps/coloring-pages/src/environments/environment.prod.ts"
+              "replace": "apps/guess-the-story/src/environments/environment.ts",
+              "with": "apps/guess-the-story/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -42,12 +44,12 @@
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
-        "buildTarget": "coloring-pages:build",
+        "buildTarget": "guess-the-story:build",
         "hmr": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "coloring-pages:build:production",
+          "buildTarget": "guess-the-story:build:production",
           "hmr": false
         }
       }
@@ -56,17 +58,17 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/coloring-pages/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/guess-the-story/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/coloring-pages"],
+      "outputs": ["coverage/apps/guess-the-story"],
       "options": {
-        "jestConfig": "apps/coloring-pages/jest.config.js",
+        "jestConfig": "apps/guess-the-story/jest.config.js",
         "passWithNoTests": true
       }
     }
   },
-  "tags": ["scope:coloring-pages"]
+  "tags": ["scope:guess-the-story"]
 }
