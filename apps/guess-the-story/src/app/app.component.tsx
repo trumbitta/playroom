@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 // Third parties
 import { Route, Redirect } from 'react-router-dom';
 
