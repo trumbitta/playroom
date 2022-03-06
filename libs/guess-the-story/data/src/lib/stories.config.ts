@@ -1,7 +1,8 @@
 // Types
 import { Story } from './story.model';
 
-// 🚨 NOTE: Image hosting is hard. Let's start with movies and hot-linked images.
+// 🚨 NOTE: Image hosting is hard.
+// Let's start with movies and hot-linked images.
 export const stories: Story[] = [
   {
     id: 0,
