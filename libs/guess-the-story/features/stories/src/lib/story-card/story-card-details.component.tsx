@@ -11,7 +11,7 @@ export const StoryCardDetails = ({
   imdbUrl,
 }: StoryCardDetailsProps) => {
   return (
-    <div>
+    <Container>
       <Title>{title}</Title>
       {image ? <Image src={image.url.toString()} alt={title} /> : null}
       {imdbUrl ? (
@@ -22,13 +22,18 @@ export const StoryCardDetails = ({
           </span>
         </Link>
       ) : null}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  overflow-y: scroll;
+`;
 
 const Title = styled.h1`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0.5rem 0;
 `;
 
 const Image = styled.img`
