@@ -19,7 +19,7 @@ interface ImageAttribution {
 
 interface StoryImage {
   url: UrlSring;
-  attribution: ImageAttribution;
+  attribution?: ImageAttribution;
 }
 
 export interface Story {
