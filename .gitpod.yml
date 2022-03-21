@@ -1,6 +1,6 @@
 tasks:
   - before: |
-      npm i -g @nrwl/cli commitizen
+      npm i -g nx commitizen
     init: npm install
 vscode:
   extensions:
