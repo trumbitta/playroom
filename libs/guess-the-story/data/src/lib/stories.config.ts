@@ -139,4 +139,49 @@ export const stories: Story[] = [
       url: 'https://m.media-amazon.com/images/M/MV5BMTQwMzE2Mzc4M15BMl5BanBnXkFtZTcwMTE4NTc1Nw@@._V1_.jpg',
     },
   },
+  {
+    id: 14,
+    hint: '😈🍌🦄',
+    title: 'Despicable Me',
+    color: '#f2df92',
+    image: {
+      url: 'https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_.jpg',
+    },
+  },
+  {
+    id: 15,
+    hint: '🦁🚢🐧',
+    title: 'Madagascar',
+    color: '#949a55',
+    image: {
+      url: 'https://m.media-amazon.com/images/M/MV5BN2I5YzFlYWEtZjRhNy00ZmQzLWJhNTktZGIwYjFjODdmNDgxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg',
+    },
+  },
+  {
+    id: 16,
+    hint: '🦁🎪🐯',
+    title: 'Madagascar 3',
+    color: '#e37b23',
+    image: {
+      url: 'https://m.media-amazon.com/images/M/MV5BZjEzYTZjMmYtZGRjMy00ZGNjLThkMzAtY2Y4Y2E5YWYxNWU2XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg',
+    },
+  },
+  {
+    id: 17,
+    hint: '👦🏻🐉👧🏻',
+    title: 'Wish Dragon',
+    color: '#ee358a',
+    image: {
+      url: 'https://m.media-amazon.com/images/M/MV5BNDg0N2NiZTAtZWVjNy00YmJlLWI0NDktMjFkMmRiZGIyNzRmXkEyXkFqcGdeQXVyMTA1OTcyNDQ4._V1_.jpg',
+    },
+  },
+  {
+    id: 18,
+    hint: '👧🏻🐉💎',
+    title: 'Raya and the Last Dragon',
+    color: '#9bdfe2',
+    image: {
+      url: 'https://m.media-amazon.com/images/M/MV5BZWNiOTc4NGItNGY4YS00ZGNkLThkOWEtMDE2ODcxODEwNjkwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg',
+    },
+  },
 ];
