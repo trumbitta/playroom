@@ -81,7 +81,7 @@ export const stories: Story[] = [
     id: 7,
     hint: '👧✂️👧🏻',
     title: 'Tangled',
-    color: '#e5a3c9',
+    color: '#ebafcf',
     image: {
       url: 'https://m.media-amazon.com/images/M/MV5BMTAxNDYxMjg0MjNeQTJeQWpwZ15BbWU3MDcyNTk2OTM@._V1_.jpg',
     },
