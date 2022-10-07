@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 // Third parties
 import styled from 'styled-components';
 
@@ -13,7 +11,7 @@ import { useAppContext } from './context/use-app-context.hook';
 // Types
 import { Drawing } from './context/app.context';
 
-export const TopBar: FC = () => {
+export const TopBar = () => {
   const {
     currentColor: { code: currentColorCode },
     setCurrentColor,
@@ -23,7 +21,7 @@ export const TopBar: FC = () => {
   const updateState = (drawing: Drawing) => {
     setDrawing(drawing);
     setCurrentColor(colors[colors.length - 1]);
-  }
+  };
 
   return (
     <Container>

@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'guess-the-story-data',
   preset: '../../../jest.preset.js',
   globals: {

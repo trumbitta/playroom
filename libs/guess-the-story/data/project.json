@@ -1,5 +1,5 @@
 {
-  "root": "libs/guess-the-story/data",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/guess-the-story/data/src",
   "projectType": "library",
   "targets": {
@@ -24,7 +24,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/guess-the-story/data"],
       "options": {
-        "jestConfig": "libs/guess-the-story/data/jest.config.js",
+        "jestConfig": "libs/guess-the-story/data/jest.config.ts",
         "passWithNoTests": true
       }
     }

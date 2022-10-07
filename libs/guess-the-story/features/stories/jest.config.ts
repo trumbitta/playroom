@@ -1,8 +1,9 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'guess-the-story-features-stories',
   preset: '../../../../jest.preset.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest',
+    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/react/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory:
