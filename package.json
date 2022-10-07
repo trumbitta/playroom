@@ -10,7 +10,6 @@
   },
   "private": true,
   "dependencies": {
-    "@reach/visually-hidden": "^0.16.0",
     "core-js": "^3.6.5",
     "polished": "^4.1.4",
     "react": "18.2.0",
