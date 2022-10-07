@@ -1,5 +1,5 @@
 // Third Parties
-import VisuallyHidden from '@reach/visually-hidden';
+import { VisuallyHidden } from './visually-hidden.component';
 import styled from 'styled-components';
 
 // Configurations
