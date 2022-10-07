@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 // Third Parties
 import VisuallyHidden from '@reach/visually-hidden';
 import styled from 'styled-components';
@@ -10,7 +8,7 @@ import { colors } from './colors';
 // Hooks
 import { useAppContext } from './context/use-app-context.hook';
 
-export const ColorPicker: FC = () => {
+export const ColorPicker = () => {
   const { setCurrentColor } = useAppContext();
 
   return (

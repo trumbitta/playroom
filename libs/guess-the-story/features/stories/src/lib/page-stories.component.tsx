@@ -14,7 +14,7 @@ export const PageStories = () => {
   return (
     <Swiper>
       {stories.map(({ id, ...rest }) => (
-        <SwiperSlide>
+        <SwiperSlide key={id}>
           <StoryCard {...rest} />
         </SwiperSlide>
       ))}

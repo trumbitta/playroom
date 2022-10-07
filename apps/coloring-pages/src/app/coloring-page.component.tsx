@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { PropsWithChildren } from 'react';
 
 // Coloring Pages
 import { ReactComponent as Anna } from '@playroom/coloring-pages/images/anna.svg';
@@ -15,7 +15,9 @@ interface ColoringPageProps {
   className?: string;
 }
 
-export const ColoringPage: FC<ColoringPageProps> = ({ className }) => {
+export const ColoringPage = ({
+  className,
+}: PropsWithChildren<ColoringPageProps>) => {
   const {
     currentColor: { code: currentColorCode },
     drawing,

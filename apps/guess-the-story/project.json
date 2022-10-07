@@ -1,10 +1,10 @@
 {
-  "root": "apps/guess-the-story",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/guess-the-story/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -38,11 +38,17 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/webpack:dev-server",
       "options": {
         "buildTarget": "guess-the-story:build",
         "hmr": true
@@ -51,8 +57,12 @@
         "production": {
           "buildTarget": "guess-the-story:build:production",
           "hmr": false
+        },
+        "development": {
+          "buildTarget": "guess-the-story:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -65,7 +75,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/guess-the-story"],
       "options": {
-        "jestConfig": "apps/guess-the-story/jest.config.js",
+        "jestConfig": "apps/guess-the-story/jest.config.ts",
         "passWithNoTests": true
       }
     }

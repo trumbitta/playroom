@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 // Configuration
 import { Color, colors } from '../colors';
@@ -6,7 +6,7 @@ import { Color, colors } from '../colors';
 // Types
 import { AppContext, AppContextType, Drawing } from './app.context';
 
-export const AppContextProvider: FC = ({ children }) => {
+export const AppContextProvider = ({ children }: { children: JSX.Element }) => {
   const [currentColor, setCurrentColor] = useState<Color>(
     colors[colors.length - 1]
   );

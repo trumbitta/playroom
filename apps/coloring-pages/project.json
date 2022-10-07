@@ -1,10 +1,10 @@
 {
-  "root": "apps/coloring-pages",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/coloring-pages/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -36,11 +36,17 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/webpack:dev-server",
       "options": {
         "buildTarget": "coloring-pages:build",
         "hmr": true
@@ -49,8 +55,12 @@
         "production": {
           "buildTarget": "coloring-pages:build:production",
           "hmr": false
+        },
+        "development": {
+          "buildTarget": "coloring-pages:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -63,7 +73,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/coloring-pages"],
       "options": {
-        "jestConfig": "apps/coloring-pages/jest.config.js",
+        "jestConfig": "apps/coloring-pages/jest.config.ts",
         "passWithNoTests": true
       }
     }
