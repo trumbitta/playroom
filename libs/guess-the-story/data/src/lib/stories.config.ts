@@ -184,4 +184,13 @@ export const stories: Story[] = [
       url: 'https://m.media-amazon.com/images/M/MV5BZWNiOTc4NGItNGY4YS00ZGNkLThkOWEtMDE2ODcxODEwNjkwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg',
     },
   },
+  {
+    id: 19,
+    hint: '👧🏾💖🐸',
+    title: 'The princess and the frog',
+    color: '#a4b560',
+    image: {
+      url: 'https://lumiere-a.akamaihd.net/v1/images/p_theprincessandthefrog_20499_1c5f55a1.jpeg',
+    },
+  },
 ];
