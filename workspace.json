@@ -7,7 +7,8 @@
     "guess-the-story": "apps/guess-the-story",
     "guess-the-story-data": "libs/guess-the-story/data",
     "guess-the-story-e2e": "apps/guess-the-story-e2e",
-    "guess-the-story-features-stories": "libs/guess-the-story/features/stories"
+    "guess-the-story-features-stories": "libs/guess-the-story/features/stories",
+    "kontra-tut": "apps/kontra-tut"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

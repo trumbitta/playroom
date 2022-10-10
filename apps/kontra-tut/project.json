@@ -1,0 +1,76 @@
+{
+  "name": "kontra-tut",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/kontra-tut/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/kontra-tut",
+        "index": "apps/kontra-tut/src/index.html",
+        "baseHref": "/",
+        "main": "apps/kontra-tut/src/main.tsx",
+        "polyfills": "apps/kontra-tut/src/polyfills.ts",
+        "tsConfig": "apps/kontra-tut/tsconfig.app.json",
+        "assets": [
+          "apps/kontra-tut/src/favicon.ico",
+          "apps/kontra-tut/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/kontra-tut/src/environments/environment.ts",
+              "with": "apps/kontra-tut/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "kontra-tut:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "kontra-tut:build:development"
+        },
+        "production": {
+          "buildTarget": "kontra-tut:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/kontra-tut/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
