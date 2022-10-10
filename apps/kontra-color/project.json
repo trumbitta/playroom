@@ -1,7 +1,7 @@
 {
-  "name": "kontra-tut",
+  "name": "kontra-color",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/kontra-tut/src",
+  "sourceRoot": "apps/kontra-color/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,15 +10,15 @@
       "defaultConfiguration": "production",
       "options": {
         "compiler": "swc",
-        "outputPath": "dist/apps/kontra-tut",
-        "index": "apps/kontra-tut/src/index.html",
+        "outputPath": "dist/apps/kontra-color",
+        "index": "apps/kontra-color/src/index.html",
         "baseHref": "/",
-        "main": "apps/kontra-tut/src/main.tsx",
-        "polyfills": "apps/kontra-tut/src/polyfills.ts",
-        "tsConfig": "apps/kontra-tut/tsconfig.app.json",
+        "main": "apps/kontra-color/src/main.tsx",
+        "polyfills": "apps/kontra-color/src/polyfills.ts",
+        "tsConfig": "apps/kontra-color/tsconfig.app.json",
         "assets": [
-          "apps/kontra-tut/src/favicon.ico",
-          "apps/kontra-tut/src/assets"
+          "apps/kontra-color/src/favicon.ico",
+          "apps/kontra-color/src/assets"
         ],
         "styles": [],
         "scripts": [],
@@ -34,8 +34,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/kontra-tut/src/environments/environment.ts",
-              "with": "apps/kontra-tut/src/environments/environment.prod.ts"
+              "replace": "apps/kontra-color/src/environments/environment.ts",
+              "with": "apps/kontra-color/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
@@ -51,15 +51,15 @@
       "executor": "@nrwl/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "kontra-tut:build",
+        "buildTarget": "kontra-color:build",
         "hmr": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "kontra-tut:build:development"
+          "buildTarget": "kontra-color:build:development"
         },
         "production": {
-          "buildTarget": "kontra-tut:build:production",
+          "buildTarget": "kontra-color:build:production",
           "hmr": false
         }
       }
@@ -68,7 +68,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/kontra-tut/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/kontra-color/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
