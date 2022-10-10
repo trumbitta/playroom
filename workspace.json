@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "alverde": "apps/alverde",
     "coloring-pages": "apps/coloring-pages",
     "coloring-pages-e2e": "apps/coloring-pages-e2e",
     "coloring-pages-images": "libs/coloring-pages/images",

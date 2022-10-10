@@ -1,0 +1,73 @@
+{
+  "name": "alverde",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/alverde/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/alverde",
+        "index": "apps/alverde/src/index.html",
+        "baseHref": "/",
+        "main": "apps/alverde/src/main.tsx",
+        "polyfills": "apps/alverde/src/polyfills.ts",
+        "tsConfig": "apps/alverde/tsconfig.app.json",
+        "assets": ["apps/alverde/src/favicon.ico", "apps/alverde/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/alverde/src/environments/environment.ts",
+              "with": "apps/alverde/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "alverde:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "alverde:build:development"
+        },
+        "production": {
+          "buildTarget": "alverde:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/alverde/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
