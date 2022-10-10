@@ -1,38 +1,38 @@
 import { useEffect, useRef } from 'react';
 
-import { init, Sprite, GameLoop } from 'kontra';
+import { init, Sprite, GameLoop, keyPressed, initKeys } from 'kontra';
 
 export function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const { canvas } = init(canvasRef.current as HTMLCanvasElement);
-    const spriteHeight = 40;
+    initKeys();
 
-    const sprite = Sprite({
-      x: 0, // starting x,y position of the sprite
-      y: canvas.height / 2 - spriteHeight / 2,
-      color: 'red', // fill color of the sprite rectangle
-      width: 20, // width and height of the sprite rectangle
-      height: spriteHeight,
-      dx: 2, // move the sprite 2px to the right every frame
+    const hero = Sprite({
+      x: getXByPercentage(90),
+      y: getYByPercentage(100),
+      color: 'rebeccapurple', // fill color of the sprite rectangle
+      width: heroWidth,
+      height: heroHeight,
     });
 
     const loop = GameLoop({
-      // create the main game loop
       update: function () {
-        // update the game state
-        sprite.update();
+        moveHero({
+          hero,
+          bounds: {
+            top: 0,
+            right: canvas.width,
+            bottom: canvas.height,
+            left: 0,
+          },
+        });
 
-        // wrap the sprites position when it reaches
-        // the edge of the screen
-        if (sprite.x > canvas.width) {
-          sprite.x = -sprite.width;
-        }
+        hero.update();
       },
       render: function () {
-        // render the game state
-        sprite.render();
+        hero.render();
       },
     });
 
@@ -46,11 +46,55 @@ export function App() {
       style={{
         border: '2px solid red',
         backgroundColor: 'silver',
-        // width: '90%',
-        // height: '90%',
+        width: 600,
+        height: 600,
       }}
     ></canvas>
   );
 }
 
 export default App;
+
+const heroWidth = 20;
+const heroHeight = 10;
+const getXByPercentage = (xPercent: number) =>
+  ((300 - heroWidth) * xPercent) / 100;
+const getYByPercentage = (yPercent: number) =>
+  ((150 - heroHeight) * yPercent) / 100;
+
+// TODO: explore making this immutable
+const moveHero = ({
+  hero,
+  bounds,
+}: {
+  hero: Sprite;
+  bounds: {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+  };
+}) => {
+  const isHeroInsideBound = {
+    top: hero.y - 1 >= bounds.top,
+    right: hero.x + 1 + heroWidth <= bounds.right,
+    bottom: hero.y + 1 + heroHeight <= bounds.bottom,
+    left: hero.x - 1 >= bounds.left,
+  };
+
+  if (keyPressed('arrowup') && isHeroInsideBound['top']) {
+    hero.y -= 1;
+  }
+
+  if (keyPressed('arrowdown') && isHeroInsideBound['bottom']) {
+    hero.y += 1;
+  }
+
+  if (keyPressed('arrowleft') && isHeroInsideBound['left']) {
+    hero.x -= 1;
+  }
+
+  if (keyPressed('arrowright') && isHeroInsideBound['right']) {
+    hero.x += 1;
+  }
+};
