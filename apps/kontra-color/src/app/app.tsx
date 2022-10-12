@@ -1,6 +1,14 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-import { init, Sprite, GameLoop, keyPressed, initKeys } from 'kontra';
+import {
+  init,
+  Sprite,
+  GameLoop,
+  keyPressed,
+  initKeys,
+  lerp,
+  collides,
+} from 'kontra';
 
 import { interpolateWarm } from 'd3-scale-chromatic';
 import { quantize } from 'd3-interpolate';
@@ -53,15 +61,14 @@ export function App() {
     });
 
     const hero = Sprite({
-      x: getXByPercentage(50),
-      y: getYByPercentage(50),
+      x: lerp(0, 300 - heroWidth, 0.5),
+      y: lerp(0, 150 - heroHeight, 0.5),
       color: 'rebeccapurple',
       width: heroWidth,
       height: heroHeight,
     });
 
     const goalCell = getRandomGoalCell({ x: maxCellX, y: maxCellY });
-    console.log(goalCell, maxCellX, maxCellY);
     const goal = Sprite({
       ...goalCell,
       color: 'white',
@@ -101,6 +108,12 @@ export function App() {
           },
         });
 
+        // Snap over the goal
+        if (collides(hero, goal)) {
+          hero.x = goal.x;
+          hero.y = goal.y;
+        }
+
         background.update();
         hero.update();
 
@@ -124,11 +137,6 @@ export function App() {
 
     loop.start();
   }, [getRandomGoalCell]);
-
-  const getXByPercentage = (xPercent: number) =>
-    ((300 - heroWidth) * xPercent) / 100;
-  const getYByPercentage = (yPercent: number) =>
-    ((150 - heroHeight) * yPercent) / 100;
 
   const moveHero = ({
     hero,
