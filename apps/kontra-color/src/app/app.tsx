@@ -8,6 +8,7 @@ import {
   initKeys,
   lerp,
   collides,
+  randInt,
 } from 'kontra';
 
 import { interpolateWarm } from 'd3-scale-chromatic';
@@ -29,8 +30,8 @@ export function App() {
   const getRandomGoalCell = useCallback(
     ({ x: maxCellX, y: maxCellY }: Position): Position =>
       cellPositionToCanvasPosition({
-        x: Math.floor(Math.random() * (Math.floor(maxCellX - 1) - 0 + 1) + 0),
-        y: Math.floor(Math.random() * (Math.floor(maxCellY - 1) - 0 + 1) + 0),
+        x: randInt(0, maxCellX - 1),
+        y: randInt(0, maxCellY - 1),
       }),
     []
   );
