@@ -170,9 +170,11 @@ export function App() {
     <canvas
       ref={canvasRef}
       style={{
-        border: '2px solid #111111',
-        borderRadius: '4px',
-        backgroundColor: 'silver',
+        border: '10px solid transparent',
+        borderImage:
+          'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
+        borderImageSlice: 1,
+        backgroundColor: 'transparent',
         width: canvasWidth,
         height: canvasHeight,
       }}
