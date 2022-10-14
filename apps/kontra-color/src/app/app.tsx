@@ -9,6 +9,7 @@ import {
   lerp,
   collides,
   randInt,
+  Vector,
 } from 'kontra';
 
 import { interpolateWarm } from 'd3-scale-chromatic';
@@ -17,26 +18,15 @@ import { quantize } from 'd3-interpolate';
 export function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const canvasPositionToCellPosition = ({ x, y }: Position): Position => ({
-    x: Math.floor(x / heroWidth),
-    y: Math.floor(y / heroHeight),
-  });
-
-  const cellPositionToCanvasPosition = ({ x, y }: Position): Position => ({
-    x: x * heroWidth,
-    y: y * heroHeight,
-  });
-
-  const getRandomGoalCell = useCallback(
-    ({ x: maxCellX, y: maxCellY }: Position): Position =>
-      cellPositionToCanvasPosition({
-        x: randInt(0, maxCellX - 1),
-        y: randInt(0, maxCellY - 1),
-      }),
+  const getRandomGoalPosition = useCallback(
+    ({ x: maxCellX, y: maxCellY }: Position): Position => ({
+      x: randInt(0, maxCellX - 1),
+      y: randInt(0, maxCellY - 1),
+    }),
     []
   );
 
-  const getArrayIndexFromCellPosition = ({
+  const getArrayIndexFromPosition = ({
     x,
     y,
     maxCellY,
@@ -46,12 +36,9 @@ export function App() {
 
   useEffect(() => {
     const { canvas } = init(canvasRef.current as HTMLCanvasElement);
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
     initKeys();
-
-    const { x: maxCellX, y: maxCellY } = canvasPositionToCellPosition({
-      x: canvas.width,
-      y: canvas.height,
-    });
 
     const background = Sprite({
       x: 0,
@@ -61,17 +48,26 @@ export function App() {
       height: canvas.height,
     });
 
+    const heroPosition: Position = {
+      x: lerp(0, canvas.width - heroWidth, 0.5),
+      y: lerp(0, canvas.height - heroHeight, 0.5),
+    };
+
+    const heroVector = Vector(heroPosition.x, heroPosition.y);
     const hero = Sprite({
-      x: lerp(0, 300 - heroWidth, 0.5),
-      y: lerp(0, 150 - heroHeight, 0.5),
+      ...heroPosition,
       color: 'rebeccapurple',
       width: heroWidth,
       height: heroHeight,
     });
 
-    const goalCell = getRandomGoalCell({ x: maxCellX, y: maxCellY });
+    const goalPosition = getRandomGoalPosition({
+      x: canvas.width,
+      y: canvas.height,
+    });
+    const goalVector = Vector(goalPosition.x, goalPosition.y);
     const goal = Sprite({
-      ...goalCell,
+      ...goalPosition,
       color: 'white',
       width: heroWidth,
       height: heroHeight,
@@ -80,20 +76,20 @@ export function App() {
     const shiftArray = <T,>(array: T[], howFar: number): T[] =>
       array.concat(array.splice(0, howFar));
 
-    const orderCellPositionsByGoalCell = (
-      cellPositions: string[],
-      goalCellIndex: number
+    const orderColoredPositionsByGoal = (
+      coloredPositions: string[],
+      goalIndex: number
     ): string[] => {
-      const distanceFromGoalColor = cellPositions.length - goalCellIndex - 1;
+      const distanceFromGoalColor = coloredPositions.length - goalIndex - 1;
 
-      return shiftArray(cellPositions, distanceFromGoalColor);
+      return shiftArray(coloredPositions, distanceFromGoalColor);
     };
 
-    const coloredCellPositions = orderCellPositionsByGoalCell(
-      quantize(interpolateWarm, maxCellX * maxCellY),
-      getArrayIndexFromCellPosition({
-        ...canvasPositionToCellPosition({ ...goalCell }),
-        maxCellY,
+    const coloredCellPositions = orderColoredPositionsByGoal(
+      quantize(interpolateWarm, canvas.width * canvas.height),
+      getArrayIndexFromPosition({
+        ...goalPosition,
+        maxCellY: canvas.height,
       })
     );
 
@@ -118,14 +114,14 @@ export function App() {
         background.update();
         hero.update();
 
-        const heroCellPosition = canvasPositionToCellPosition({
+        const heroPosition: Position = {
           x: hero.x,
           y: hero.y,
-        });
+        };
 
-        const index = getArrayIndexFromCellPosition({
-          ...heroCellPosition,
-          maxCellY,
+        const index = getArrayIndexFromPosition({
+          ...heroPosition,
+          maxCellY: canvas.height,
         });
         background.color = coloredCellPositions[index];
       },
@@ -137,7 +133,7 @@ export function App() {
     });
 
     loop.start();
-  }, [getRandomGoalCell]);
+  }, [getRandomGoalPosition]);
 
   const moveHero = ({
     hero,
@@ -184,8 +180,6 @@ export function App() {
           'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
         borderImageSlice: 1,
         backgroundColor: 'transparent',
-        width: canvasWidth,
-        height: canvasHeight,
       }}
     ></canvas>
   );
@@ -193,10 +187,10 @@ export function App() {
 
 export default App;
 
-const canvasWidth = 600;
-const canvasHeight = 600;
+const canvasWidth = 400;
+const canvasHeight = 400;
 const heroWidth = 20;
-const heroHeight = 10;
+const heroHeight = 20;
 
 type Position = {
   x: number;
