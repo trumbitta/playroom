@@ -20,19 +20,11 @@ export function App() {
 
   const getRandomGoalPosition = useCallback(
     ({ x: maxCellX, y: maxCellY }: Position): Position => ({
-      x: randInt(0, maxCellX - 1),
-      y: randInt(0, maxCellY - 1),
+      x: randInt(0, maxCellX - heroWidth),
+      y: randInt(0, maxCellY - heroHeight),
     }),
     []
   );
-
-  const getArrayIndexFromPosition = ({
-    x,
-    y,
-    maxCellY,
-  }: Position & {
-    maxCellY: number;
-  }): number => y * maxCellY + x;
 
   useEffect(() => {
     const { canvas } = init(canvasRef.current as HTMLCanvasElement);
@@ -52,8 +44,6 @@ export function App() {
       x: lerp(0, canvas.width - heroWidth, 0.5),
       y: lerp(0, canvas.height - heroHeight, 0.5),
     };
-
-    const heroVector = Vector(heroPosition.x, heroPosition.y);
     const hero = Sprite({
       ...heroPosition,
       color: 'rebeccapurple',
@@ -73,25 +63,29 @@ export function App() {
       height: heroHeight,
     });
 
-    const shiftArray = <T,>(array: T[], howFar: number): T[] =>
-      array.concat(array.splice(0, howFar));
-
-    const orderColoredPositionsByGoal = (
-      coloredPositions: string[],
-      goalIndex: number
-    ): string[] => {
-      const distanceFromGoalColor = coloredPositions.length - goalIndex - 1;
-
-      return shiftArray(coloredPositions, distanceFromGoalColor);
-    };
-
-    const coloredCellPositions = orderColoredPositionsByGoal(
-      quantize(interpolateWarm, canvas.width * canvas.height),
-      getArrayIndexFromPosition({
-        ...goalPosition,
-        maxCellY: canvas.height,
-      })
+    const distanceFromVertexNW = goalVector.distance(Vector(0, 0));
+    const distanceFromVertexNE = goalVector.distance(
+      Vector(canvas.width - heroWidth, 0)
     );
+    const distanceFromVertexSW = goalVector.distance(
+      Vector(0, canvas.height - heroHeight)
+    );
+    const distanceFromVertexSE = goalVector.distance(
+      Vector(canvas.width - heroWidth, canvas.height - heroHeight)
+    );
+    const longestDistanceFromGoalToBounds = Math.ceil(
+      Math.max(
+        distanceFromVertexNW,
+        distanceFromVertexNE,
+        distanceFromVertexSW,
+        distanceFromVertexSE
+      )
+    );
+
+    const coloredDistances = quantize(
+      interpolateWarm,
+      longestDistanceFromGoalToBounds
+    ).reverse();
 
     const loop = GameLoop({
       update: function () {
@@ -119,11 +113,11 @@ export function App() {
           y: hero.y,
         };
 
-        const index = getArrayIndexFromPosition({
-          ...heroPosition,
-          maxCellY: canvas.height,
-        });
-        background.color = coloredCellPositions[index];
+        const heroVector = Vector(heroPosition.x, heroPosition.y);
+
+        // Monkey patching because it's the MVP of a mini-game for a kid
+        const distance = Math.floor(heroVector.distance(goalVector));
+        background.color = coloredDistances[distance];
       },
       render: function () {
         background.render();
@@ -175,7 +169,7 @@ export function App() {
     <canvas
       ref={canvasRef}
       style={{
-        border: '10px solid transparent',
+        border: `${canvasBorderInPx}px solid transparent`,
         borderImage:
           'linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%)',
         borderImageSlice: 1,
@@ -187,8 +181,9 @@ export function App() {
 
 export default App;
 
-const canvasWidth = 400;
-const canvasHeight = 400;
+const canvasBorderInPx = 10;
+const canvasWidth = window.innerWidth - canvasBorderInPx * 2;
+const canvasHeight = window.innerHeight - canvasBorderInPx * 2;
 const heroWidth = 20;
 const heroHeight = 20;
 
