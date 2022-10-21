@@ -37,7 +37,7 @@ export const App = () => {
     initKeys();
 
     const startGameLoop = async () => {
-      await load('ada_0.png');
+      await load('ada_0.png', 'FX_CloudAlpha08.png');
 
       const intro = getIntroScreen({
         height: canvas.height,
@@ -50,6 +50,13 @@ export const App = () => {
         color: 'transparent',
         width: canvas.width,
         height: canvas.height,
+      });
+
+      const cloud = Sprite({
+        x: 0,
+        y: 0,
+        image: imageAssets['FX_CloudAlpha08'],
+        dx: 1,
       });
 
       const hero = createHero({
@@ -90,6 +97,11 @@ export const App = () => {
           checkWinCondition({ hero, goal });
 
           background.update();
+          cloud.update();
+          if (cloud.x === canvas.width) {
+            cloud.x = -cloud.width;
+          }
+
           hero.update();
 
           const distance = Math.floor(hero['toVector']().distance(goalVector));
@@ -104,6 +116,8 @@ export const App = () => {
           } else {
             intro.render();
           }
+
+          cloud.render();
         },
       });
 
