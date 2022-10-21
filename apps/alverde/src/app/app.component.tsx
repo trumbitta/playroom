@@ -72,10 +72,8 @@ export const App = () => {
         goal.color = 'white';
       }
 
-      const goalVector = goal['toVector']();
-
       const coloredDistances = getColoredDistances({
-        goalVector,
+        goalVector: goal.position,
         canvasHeight: canvas.height,
         canvasWidth: canvas.width,
       });
@@ -104,7 +102,7 @@ export const App = () => {
 
           hero.update();
 
-          const distance = Math.floor(hero['toVector']().distance(goalVector));
+          const distance = Math.floor(hero.position.distance(goal.position));
           background.color = coloredDistances[distance];
         },
         render: function () {
@@ -335,7 +333,6 @@ const createHero = ({
     width: heroWidth,
     height: heroHeight,
     animations,
-    toVector: () => Vector(hero.x, hero.y),
   });
 
   return hero;
@@ -353,7 +350,6 @@ const createGoal = ({
     color: 'transparent',
     width: heroWidth / 2,
     height: heroHeight / 2,
-    toVector: () => Vector(sprite.x, sprite.y),
   });
 
   return sprite;
