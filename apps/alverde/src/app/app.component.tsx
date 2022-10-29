@@ -75,6 +75,7 @@ export const App = () => {
 
       if (isDebug) {
         goal.color = 'white';
+        intro.hide();
       }
 
       const coloredDistances = getColoredDistances({
