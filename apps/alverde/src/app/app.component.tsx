@@ -63,10 +63,15 @@ export const App = () => {
         canvasHeight: canvas.height,
         canvasWidth: canvas.width,
       });
-      const goal = createGoal({
-        canvasHeight: canvas.height,
-        canvasWidth: canvas.width,
-      });
+
+      // 🚫 No instant wins!
+      let goal: Sprite;
+      do {
+        goal = createGoal({
+          canvasHeight: canvas.height,
+          canvasWidth: canvas.width,
+        });
+      } while (collides(hero, goal));
 
       if (isDebug) {
         goal.color = 'white';
