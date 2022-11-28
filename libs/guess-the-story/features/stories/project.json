@@ -1,24 +1,19 @@
 {
+  "name": "guess-the-story-features-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/guess-the-story/features/stories/src",
   "projectType": "library",
-  "tags": [
-    "scope:guess-the-story"
-  ],
+  "tags": ["scope:guess-the-story"],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/guess-the-story/features/stories",
         "tsConfig": "libs/guess-the-story/features/stories/tsconfig.lib.json",
         "project": "libs/guess-the-story/features/stories/package.json",
         "entryFile": "libs/guess-the-story/features/stories/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
+        "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
@@ -32,9 +27,7 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/guess-the-story/features/stories/**/*.{ts,tsx,js,jsx}"
@@ -44,7 +37,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/guess-the-story/features/stories"
+        "{workspaceRoot}/coverage/libs/guess-the-story/features/stories"
       ],
       "options": {
         "jestConfig": "libs/guess-the-story/features/stories/jest.config.ts",

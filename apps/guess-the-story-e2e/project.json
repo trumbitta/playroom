@@ -1,4 +1,5 @@
 {
+  "name": "guess-the-story-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/guess-the-story-e2e/src",
   "projectType": "application",
