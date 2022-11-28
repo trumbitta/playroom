@@ -1,0 +1,16 @@
+{
+  "name": "ttt-state",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ttt/state/src",
+  "projectType": "library",
+  "tags": ["scope:ttt"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ttt/state/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "ttt-features-match",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ttt/features/match/src",
+  "projectType": "library",
+  "tags": ["scope:ttt"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ttt/features/match/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

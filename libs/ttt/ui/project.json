@@ -1,0 +1,16 @@
+{
+  "name": "ttt-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ttt/ui/src",
+  "projectType": "library",
+  "tags": ["scope:ttt"],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ttt/ui/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

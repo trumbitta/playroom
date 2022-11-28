@@ -23,7 +23,11 @@
       ],
       "@playroom/guess-the-story/features/stories": [
         "libs/guess-the-story/features/stories/src/index.ts"
-      ]
+      ],
+      "@playroom/ttt/features/match": ["libs/ttt/features/match/src/index.ts"],
+      "@playroom/ttt/shared/types": ["libs/ttt/shared/types/src/index.ts"],
+      "@playroom/ttt/state": ["libs/ttt/state/src/index.ts"],
+      "@playroom/ttt/ui": ["libs/ttt/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
