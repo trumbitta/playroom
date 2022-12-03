@@ -1,4 +1,5 @@
 {
+  "name": "coloring-pages-images",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/coloring-pages/images/src",
   "projectType": "library",

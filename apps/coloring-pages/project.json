@@ -1,4 +1,5 @@
 {
+  "name": "coloring-pages",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/coloring-pages/src",
   "projectType": "application",
@@ -71,7 +72,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/coloring-pages"],
+      "outputs": ["{workspaceRoot}/coverage/apps/coloring-pages"],
       "options": {
         "jestConfig": "apps/coloring-pages/jest.config.ts",
         "passWithNoTests": true

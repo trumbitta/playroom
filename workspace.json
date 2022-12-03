@@ -8,7 +8,12 @@
     "guess-the-story": "apps/guess-the-story",
     "guess-the-story-data": "libs/guess-the-story/data",
     "guess-the-story-e2e": "apps/guess-the-story-e2e",
-    "guess-the-story-features-stories": "libs/guess-the-story/features/stories"
+    "guess-the-story-features-stories": "libs/guess-the-story/features/stories",
+    "ttt": "apps/ttt",
+    "ttt-features-match": "libs/ttt/features/match",
+    "ttt-shared-types": "libs/ttt/shared/types",
+    "ttt-state": "libs/ttt/state",
+    "ttt-ui": "libs/ttt/ui"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

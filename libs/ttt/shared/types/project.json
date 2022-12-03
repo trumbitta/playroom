@@ -1,0 +1,16 @@
+{
+  "name": "ttt-shared-types",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ttt/shared/types/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/ttt/shared/types/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["scope:ttt"]
+}

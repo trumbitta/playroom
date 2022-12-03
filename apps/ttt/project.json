@@ -1,0 +1,74 @@
+{
+  "name": "ttt",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ttt/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/ttt",
+        "index": "apps/ttt/src/index.html",
+        "baseHref": "/",
+        "main": "apps/ttt/src/main.tsx",
+        "polyfills": "apps/ttt/src/polyfills.ts",
+        "tsConfig": "apps/ttt/tsconfig.app.json",
+        "assets": ["apps/ttt/src/favicon.ico", "apps/ttt/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ttt/src/environments/environment.ts",
+              "with": "apps/ttt/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ttt:build",
+        "port": 4200,
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ttt:build:development"
+        },
+        "production": {
+          "buildTarget": "ttt:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ttt/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["scope:ttt"]
+}
