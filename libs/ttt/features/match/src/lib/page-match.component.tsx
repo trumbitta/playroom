@@ -20,6 +20,10 @@ export const PageMatch = () => {
   const board = useSelector(selectMatchBoard);
   const winner = useSelector(selectMatchWinner);
 
+  const resetMatch = useCallback(() => {
+    dispatch(matchActions.resetMatch());
+  }, [dispatch]);
+
   const registerMove = useCallback(
     (cellIndex: number) => {
       dispatch(matchActions.registerMove({ cellIndex }));
@@ -31,6 +35,12 @@ export const PageMatch = () => {
     <>
       <Header>
         <Title>TTT</Title>
+        <NewGameButton onClick={resetMatch}>
+          <span role="img" aria-label="">
+            🔄
+          </span>{' '}
+          Reset match
+        </NewGameButton>
       </Header>
 
       <Main>
@@ -64,4 +74,8 @@ const Title = styled.h1`
 
 const Main = styled.main`
   padding: 0 1rem;
+`;
+
+const NewGameButton = styled.button`
+  background-color: #fa0000;
 `;

@@ -29,6 +29,9 @@ const matchSlice = createSlice({
   name: 'match',
   initialState,
   reducers: {
+    resetMatch(state) {
+      return initialState;
+    },
     registerMove(state, { payload: { cellIndex } }: PayloadAction<MoveData>) {
       const { board, nowMoving } = state;
       const newBoard = board.map((cellValue, index) =>
